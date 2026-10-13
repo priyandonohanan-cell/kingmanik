@@ -1,447 +1,899 @@
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGMANIK — Defend the Kingdom</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#080a14;color:#ffe7a1;font-family:Arial,sans-serif;text-align:center}
-header{padding:12px 8px}
-h1{margin:5px;color:#ffd45b;font-size:clamp(24px,4vw,38px);text-shadow:0 0 16px #ff9e24}
-header p{color:#c6c8db;font-size:13px}
-.game-wrap{width:min(1100px,100%);margin:auto;padding:8px}
-canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#12172d;border:2px solid #d6a643;border-radius:12px;touch-action:none}
-.controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px auto}
-button{border:1px solid #e6bd5c;background:#29243c;color:#ffe9ae;border-radius:10px;padding:13px 17px;font-weight:bold;cursor:pointer;touch-action:none}
-button:active{filter:brightness(1.4)}
-#start{background:linear-gradient(135deg,#ffe58b,#c88721);color:#211505;font-size:16px}
-.help{color:#c3c7dc;font-size:12px;line-height:1.8}
-a{color:#ffd45b}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>$KINGMANIK | The King of Degens</title>
+<meta name="description" content="$KINGMANIK — a degen-style Solana meme token   project. Join the kingdom. DYOR.">
+<link rel="icon" type="image/png" href="images/kingmanik.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080808;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            border-bottom: 1px solid #242424;
+        }
+
+        .logo {
+            color: #f5c542;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #cccccc;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .crown {
+            font-size: 75px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px #f5c542);
+        }
+
+        h1 {
+            font-size: clamp(42px, 8vw, 85px);
+            color: #f5c542;
+            letter-spacing: 3px;
+            text-shadow: 0 0 25px #8a671b;
+        }
+
+        h2 {
+            margin-top: 15px;
+            font-size: clamp(16px, 3vw, 24px);
+            letter-spacing: 5px;
+        }
+
+        .description {
+            max-width: 550px;
+            color: #aaaaaa;
+            line-height: 1.8;
+            margin: 25px 0 35px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #f5c542;
+            color: #080808;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+    background: #ffffff;
+    color: #080808;
+    box-shadow: 0 0 25px rgba(245, 197, 66, 0.8);
+    transform: translateY(-3px);
+}
+        }
+
+        .tagline {
+            margin-top: 35px;
+            color: #666666;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #555555;
+            border-top: 1px solid #242424;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+        }
+
+.kingmanik-image {
+    display: block;
+    width: 280px;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 20px;
+    animation: kingGlow 3s ease-in-out infinite;
+}
+
+@keyframes kingGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.25));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(255, 193, 7, 0.8));
+    }
+}
+
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button {
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+
+h1 {
+    color: #FFD700;
+    text-shadow:
+        0 0 4px rgba(255, 215, 0, 0.45),
+        0 0 12px rgba(255, 170, 0, 0.25);
+}
+
+.token-info {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: min(100% - 32px, 620px);
+    margin: 32px auto 24px;
+}
+
+.token-card {
+    box-sizing: border-box;
+    flex: 1 1 160px;
+    min-width: 0;
+    max-width: 195px;
+    padding: 22px 14px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.token-card span {
+    display: block;
+    color: #aaaaaa;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.token-card h3 {
+    color: #FFD700;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.token-card:hover {
+    transform: translateY(-4px);
+    border-color: #FFD700;
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.16);
+}
+
+.wallet-section {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 24px auto 48px;
+    padding: 0 16px;
+    text-align: center;
+}
+
+.wallet-button {
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #FFD700, #F5A623);
+    color: #111111;
+    border: 1px solid #FFE680;
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.wallet-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.45);
+}
+
+.wallet-note {
+    color: #999999;
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 1.2px;
+    margin: 12px auto 0;
+}
+
+@keyframes goldPulse {
+    0%, 100% {
+        background-color: #080808;
+    }
+    50% {
+        background-color: #151106;
+    }
+}
+
+body {
+    animation: goldPulse 6s ease-in-out infinite;
+}
+
+#coin-rain {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body {
+    position: relative;
+}
+
+body > *:not(#coin-rain) {
+    position: relative;
+    z-index: 1;
+}
+
+.gold-coin {
+    position: absolute;
+    top: -50px;
+    color: #FFD700;
+    font-size: 24px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    animation: coinFall linear forwards;
+}
+
+@keyframes coinFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .token-info {
+        width: calc(100% - 24px);
+        gap: 10px;
+    }
+
+    .token-card {
+        flex: 1 1 130px;
+        padding: 18px 10px;
+    }
+
+    .token-card h3 {
+        font-size: 14px;
+    }
+
+    .wallet-button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .wallet-note {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .kingmanik-image {
+        max-width: 80%;
+        height: auto;
+    }
+}
+
+
+.about-section {
+    max-width: 760px;
+    box-sizing: border-box;
+    margin: 35px auto;
+    padding: 55px 24px;
+    text-align: center;
+    background: linear-gradient(
+        145deg,
+        rgba(24, 20, 8, 0.95),
+        rgba(8, 8, 8, 0.98)
+    );
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 16px;
+}
+
+.about-section h2 {
+    color: #FFD700;
+    font-size: 26px;
+    letter-spacing: 2px;
+    margin: 0 0 22px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.about-section p {
+    color: #dddddd;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 auto 18px;
+}
+
+.about-section .about-warning {
+    color: #999999;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        margin: 24px 12px;
+        padding: 38px 18px;
+    }
+
+    .about-section h2 {
+        font-size: 21px;
+    }
+}
+
+
+.community-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.community-button {
+    display: inline-block;
+    padding: 14px 24px;
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    border-radius: 8px;
+    color: #FFD700;
+    background: rgba(255, 215, 0, 0.05);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-align: center;
+}
+
+.community-button.disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.community-button:not(.disabled) {
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+.community-button:not(.disabled):hover {
+    transform: translateY(-4px);
+    background: rgba(255, 215, 0, 0.12);
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.2);
+}
+
+.site-footer {
+    padding: 40px 20px 25px;
+    background: #050505;
+    border-top: 1px solid rgba(255, 215, 0, 0.25);
+    text-align: center;
+    box-shadow: 0 -5px 20px rgba(255, 215, 0, 0.06);
+}
+
+.footer-logo {
+    color: #FFD700;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.site-footer p {
+    color: #888888;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+.footer-line {
+    width: 60px;
+    height: 2px;
+    margin: 22px auto;
+    background: #FFD700;
+    opacity: 0.6;
+}
+
+.site-footer .footer-copyright {
+    color: #666666;
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+#coin-toggle {
+    position: fixed !important;
+    top: 80px !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    z-index: 99999 !important;
+    box-sizing: border-box;
+    max-width: calc(100vw - 40px);
+    padding: 10px 14px;
+    background: rgba(12, 12, 12, 0.95);
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.65);
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    pointer-events: auto !important;
+    isolation: isolate;
+}
+
+#coin-toggle:hover {
+    background: #FFD700;
+    color: #080808;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    #coin-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 8px 10px;
+        font-size: 9px;
+    }
+}
+
+#back-to-top {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: 20;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #FFD700;
+    border-radius: 12px;
+    background: rgba(15, 15, 15, 0.95);
+    color: #FFD700;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+    transition: 0.3s ease;
+}
+
+#back-to-top:hover {
+    background: #FFD700;
+    color: #080808;
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+    #back-to-top {
+        right: 12px;
+        bottom: 12px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+#tokenomics > div > div {
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+#tokenomics > div > div:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 24px rgba(255, 215, 0, 0.22);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+#tokenomics h2 {
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
+}
+
+.site-footer {
+    padding: 35px 20px;
+    text-align: center;
+    background: #080808;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.site-footer p {
+    color: #FFD700;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0 0 12px;
+}
+
+.site-footer .footer-warning {
+    color: #888888;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.contract-button {
+    margin-top: 12px;
+    padding: 12px 16px;
+    max-width: 100%;
+    background: rgba(255, 215, 0, 0.06);
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+    </style>
 </head>
+
 <body>
-<header>
-<h1>👑 KINGMANIK</h1>
-<p>DEFEND THE KINGDOM — Rescue your friends. Defeat the invaders.</p>
-</header>
 
-<div class="game-wrap">
-<canvas id="game" width="960" height="540"></canvas>
+<div id="coin-rain"></div>
 
-<div class="controls">
-<button id="left">◀ KIRI</button>
-<button id="right">KANAN ▶</button>
-<button id="jump">▲ LOMPAT</button>
-<button id="fire">⚔ TEMBAK</button>
+<button id="coin-toggle" type="button" aria-pressed="true">
+    🪙 STOP COIN RAIN
+</button>
+
+<button id="back-to-top" type="button" aria-label="Back to top">
+    ↑
+</button>
+
+    <header>
+        <div class="logo">$KINGMANIK </div>  
+<nav>
+    <a href="#home">Home</a>
+    <a href="#kingmanik-arcade">Arcade</a>
+    <a href="#about-section">About</a>
+    <a href="#tokenomics">Tokenomics</a>
+</nav>
+
+    </header>
+
+    <main class="hero" id="home">
+        <div class="crown"></div>
+<img src="images/kingmanik.png" alt="KINGMANIK King Mascot" class="kingmanik-image">
+        <h1>$KINGMANIK</h1>
+
+        <h2>THE KING OF DEGENS</h2>
+
+        <p class="description" id="about">
+            Welcome to the kingdom.
+            One King. One Community. Infinite Possibilities.
+            The throne belongs to those who dare.
+        </p>
+
+        <a class="button" href="#tokenomics" style="margin-bottom: 30px;">
+    ENTER THE KINGDOM
+</a>
+
+<a class="button" href="game/index.html"
+   style="margin-bottom: 30px; background: linear-gradient(135deg, #FFD700, #F5A623);">
+    🎮 PLAY KINGMANIK GAME
+</a>
+
+        <p class="tagline">
+            BUILT FOR THE DEGENS · POWERED BY THE COMMUNITY
+        </p>
+
+<div class="token-info">
+    <div class="token-card">
+        <span>TOKEN</span>
+        <h3>$KINGMANIK</h3>
+    </div>
+
+    <div class="token-card">
+        <span>BLOCKCHAIN</span>
+        <h3>Solana</h3>
+    </div>
+
+    <div class="token-card">
+        <span>STATUS</span>
+        <h3>COMING SOON</h3>
+    </div>
 </div>
 
-<p class="help">
-PC: A/D atau ←/→ bergerak · W/↑ lompat · SPACE menembak.<br>
-Hancurkan kandang untuk membebaskan teman. Sekutu akan membantu menyerang musuh!
-</p>
-
-<button id="start">⚔ MULAI PERTEMPURAN</button>
-<p><a href="../index.html">← Kembali ke website KINGMANIK</a></p>
+<div class="wallet-section">
+    <button class="wallet-button" type="button">
+        CONNECT WALLET
+    </button>
+    <p class="wallet-note">SOLANA NETWORK · WALLET CONNECT COMING SOON</p>
 </div>
+
+    </main>
+
+<section id="kingmanik-arcade" style="
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, #100e05, #080808);
+    border-top: 1px solid rgba(255, 215, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.25);
+">
+    <p style="
+        color: #FFD700;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        margin-bottom: 15px;
+    ">
+        ENTER THE BATTLEFIELD
+    </p>
+
+    <h2 style="
+        color: #FFD700;
+        font-size: clamp(28px, 5vw, 42px);
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    ">
+        🎮 KINGMANIK ARCADE
+    </h2>
+
+    <p style="
+        color: #cccccc;
+        max-width: 520px;
+        margin: 0 auto 30px;
+        line-height: 1.8;
+    ">
+        The kingdom needs a hero. Enter the battlefield,
+        defeat your enemies, rescue your allies, and fight
+        for the throne!
+    </p>
+
+    <a href="game/index.html" class="button">
+        ⚔️ PLAY NOW
+    </a>
+
+    <p style="
+        color: #777777;
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-top: 22px;
+    ">
+        FREE TO PLAY · BUILT FOR DEGENS
+    </p>
+</section>
+
+<section id="about-section" class="about-section">
+    <h2>THE KINGMANIK VISION</h2>
+
+    <p>
+        Born for the degens. Built by the community.
+        $KINGMANIK brings bold energy to the Solana meme universe.
+    </p>
+
+    <p class="about-warning">
+        A community-driven meme project. No promises, just degen energy.
+    </p>
+</section>
+
+
+<section id="tokenomics" style="padding: 60px 20px; text-align: center; background: #101010;">
+    <h2 style="color: #f5c542; margin-bottom: 15px;">
+        KINGMANIK TOKENOMICS
+    </h2>
+
+    <p style="color: #999; margin-bottom: 35px;">
+        The kingdom starts here.
+    </p>
+
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+
+        <div style="border: 1px solid #f5c542; padding: 25px; border-radius: 10px; width: 220px;">
+            <h3 style="color: #f5c542;">NETWORK</h3>
+            <p style="color: white; margin-top: 12px;">Solana</p>
+        </div>
+
+        <div style="border: 1px solid #f5c542; padding: 25px; border-radius: 10px; width: 220px;">
+            <h3 style="color: #f5c542;">TOTAL SUPPLY</h3>
+            <p style="color: white; margin-top: 12px;">TBA</p>
+        </div>
+
+        <div style="border: 1px solid #f5c542; padding: 25px; border-radius: 10px; width: 220px;">
+            <h3 style="color: #f5c542;">CONTRACT</h3>
+<p style="color: white; margin-top: 12px;">COMING SOON</p>
+<button class="contract-button" type="button" disabled>
+    COPY CONTRACT ADDRESS
+</button>
+
+        </div>
+
+    </div>
+</section>
+
+<section style="padding: 45px 20px; text-align: center; background: #080808;">
+    <h2 style="color: #f5c542; margin-bottom: 15px;">
+        JOIN THE KINGDOM
+    </h2>
+
+    <p style="color: #999; margin-bottom: 25px;">
+        Follow the journey. Become part of the community.
+    </p>
+
+<div class="community-buttons">
+    <span class="community-button disabled">
+        X · COMING SOON
+    </span>
+
+    <span class="community-button disabled">
+        TELEGRAM · COMING SOON
+    </span>
+</div>
+
+</section>
+
+<footer class="site-footer">
+    <div class="footer-logo">$KINGMANIK</div>
+
+    <p>A COMMUNITY-DRIVEN MEMECOIN PROJECT</p>
+
+    <div class="footer-line"></div>
+
+    <p class="footer-copyright">
+        © 2026 $KINGMANIK. ALL RIGHTS RESERVED.
+    </p>
+</footer>
 
 <script>
-(()=>{
-"use strict";
+const coinRain = document.getElementById("coin-rain");
 
-const canvas=document.getElementById("game");
-const ctx=canvas.getContext("2d");
-const W=960,H=540,GROUND=465;
-const heroImage=new Image();
-heroImage.src="../images/kingmanik.png";
+function createCoin() {
+    const coin = document.createElement("span");
+    coin.className = "gold-coin";
+    coin.textContent = "🪙";
 
-const rand=(a,b)=>Math.random()*(b-a)+a;
-const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+    coin.style.left = Math.random() * 100 + "vw";
+    coin.style.fontSize = (16 + Math.random() * 18) + "px";
+    coin.style.animationDuration = (4 + Math.random() * 4) + "s";
 
-let running=false,gameOver=false;
-let score=0,coins=0,wave=1,frame=0,spawnTimer=0;
-let player,enemies,shots,cages,allies,loot,particles;
-const keys={};
-const touch={left:false,right:false,jump:false,fire:false};
-const stars=Array.from({length:70},()=>({x:rand(0,W),y:rand(15,230),r:rand(1,2)}));
-const groundMarks=Array.from({length:45},()=>({x:rand(0,W),y:rand(480,535),w:rand(3,12)}));
+    coinRain.appendChild(coin);
 
-function reset(){
- score=0;coins=0;wave=1;frame=0;spawnTimer=60;gameOver=false;
- player={x:75,y:GROUND-64,w:48,h:64,vx:0,vy:0,hp:5,maxHp:5,ground:true,cool:0,inv:0};
- shots=[];enemies=[];allies=[];loot=[];particles=[];
- cages=[
-  {x:340,y:405,hp:5,max:5,freed:false},
-  {x:540,y:405,hp:7,max:7,freed:false},
-  {x:740,y:405,hp:9,max:9,freed:false}
- ];
- for(let i=0;i<5;i++)spawnEnemy(true);
+    setTimeout(() => {
+        coin.remove();
+    }, 8500);
 }
 
-function castle(){
- const sky=ctx.createLinearGradient(0,0,0,H);
- sky.addColorStop(0,"#10152e");sky.addColorStop(1,"#30233d");
- ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+let coinRainInterval = setInterval(createCoin, 300);
 
- ctx.fillStyle="#e6dfbd";
- stars.forEach(s=>{ctx.globalAlpha=.5+Math.sin(frame*.03+s.x)*.3;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill()});
- ctx.globalAlpha=1;
+const coinToggle = document.getElementById("coin-toggle");
+console.log("Tombol ditemukan:", coinToggle);
+console.log("Coin rain ditemukan:", coinRain);
+let coinRainEnabled = true;
 
- ctx.fillStyle="#fff0b5";ctx.beginPath();ctx.arc(830,78,32,0,Math.PI*2);ctx.fill();
- ctx.fillStyle="#15182d";ctx.beginPath();ctx.arc(844,65,29,0,Math.PI*2);ctx.fill();
+coinToggle.addEventListener("click", () => {
+    coinRainEnabled = !coinRainEnabled;
 
- ctx.fillStyle="#24233d";
- ctx.beginPath();ctx.moveTo(0,370);ctx.lineTo(120,275);ctx.lineTo(245,370);
- ctx.lineTo(390,290);ctx.lineTo(540,370);ctx.lineTo(720,270);
- ctx.lineTo(890,370);ctx.lineTo(960,315);ctx.lineTo(960,500);ctx.lineTo(0,500);ctx.fill();
-
- ctx.fillStyle="#55506b";ctx.fillRect(290,225,400,240);
- ctx.fillStyle="#756b80";ctx.fillRect(310,245,360,220);
- ctx.fillStyle="#42334d";ctx.fillRect(425,345,140,120);
-
- for(const x of [265,355,615,700]){
-  ctx.fillStyle="#62596e";ctx.fillRect(x,155,65,310);
-  ctx.fillStyle="#302840";ctx.beginPath();
-  ctx.moveTo(x-10,157);ctx.lineTo(x+32,88);ctx.lineTo(x+75,157);ctx.fill();
-  ctx.fillStyle="#ffd365";ctx.fillRect(x+23,195,18,25);
-  ctx.fillStyle="#43374f";ctx.fillRect(x+15,245,35,48);
- }
- ctx.fillStyle="#756780";ctx.fillRect(420,125,150,240);
- ctx.fillStyle="#9c8490";ctx.fillRect(438,145,114,220);
- ctx.fillStyle="#352840";ctx.beginPath();
- ctx.moveTo(400,132);ctx.lineTo(495,42);ctx.lineTo(590,132);ctx.fill();
- ctx.fillStyle="#ffdb72";ctx.fillRect(483,85,24,29);
- ctx.fillStyle="#31253e";ctx.fillRect(472,280,46,85);
- ctx.fillStyle="#ffd365";ctx.fillRect(350,280,20,28);ctx.fillRect(620,280,20,28);
-
- ctx.fillStyle="#756b80";
- for(let x=310;x<680;x+=35)ctx.fillRect(x,220,22,20);
-
- ctx.fillStyle="#40354b";ctx.fillRect(0,GROUND,W,H-GROUND);
- ctx.fillStyle="#c4a067";ctx.fillRect(0,GROUND,W,6);
- ctx.fillStyle="#292236";ctx.fillRect(0,GROUND+6,W,H-GROUND-6);
- ctx.fillStyle="#66523e";
- groundMarks.forEach(m=>ctx.fillRect(m.x,m.y,m.w,2));
-}
-
-function label(text,x,y,size=16,color="#ffe7a1",align="left"){
- ctx.font=`bold ${size}px Arial`;
- ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(text,x,y);ctx.textAlign="left";
-}
-
-function burst(x,y,color,n=12){
- for(let i=0;i<n;i++){
-  particles.push({x,y,vx:rand(-3,3),vy:rand(-4,2),life:rand(15,32),color,size:rand(2,5)});
- }
-}
-
-function spawnEnemy(initial=false){
- const flying=Math.random()<.4;
- const hp=1+Math.floor(wave/3);
- const maxHp=flying?hp+1:hp;
- enemies.push({
-  x:initial?rand(620,920):rand(980,1100),
-  y:flying?rand(275,365):GROUND-42,
-  baseY:flying?rand(260,365):GROUND-42,
-  w:flying?44:35,h:flying?34:42,
-  hp:maxHp,maxHp,
-  speed:(flying?rand(1.1,1.8):rand(.7,1.25))+wave*.06,
-  cool:rand(50,120),flying,phase:rand(0,6.28),dead:false
- });
-}
-
-function shoot(x,y,vx,vy,owner="hero"){
- shots.push({x,y,vx,vy,owner,life:120});
-}
-
-function shootAtNearest(x,y,owner){
- if(!enemies.length)return;
- let target=enemies.reduce((best,e)=>
-  Math.hypot(e.x-x,e.y-y)<Math.hypot(best.x-x,best.y-y)?e:best,enemies[0]);
- const dx=target.x+target.w/2-x,dy=target.y+target.h/2-y;
- const len=Math.hypot(dx,dy)||1;
- shoot(x,y,dx/len*7,dy/len*7,owner);
-}
-
-function rescue(cage){
- cage.freed=true;
- allies.push({x:cage.x+6,y:GROUND-50,w:34,h:50,cool:20});
- score+=100;coins+=10;
- burst(cage.x+20,cage.y,"#64ffb2",28);
-}
-
-function drawCages(){
- cages.forEach(q=>{
-  if(q.freed)return;
-  ctx.fillStyle="#6b4a36";ctx.fillRect(q.x,q.y,43,57);
-  ctx.fillStyle="#44334c";ctx.fillRect(q.x+5,q.y+5,33,47);
-  ctx.fillStyle="#74d9a5";ctx.beginPath();ctx.arc(q.x+21,q.y+20,8,0,7);ctx.fill();
-  ctx.fillStyle="#e5bb88";ctx.fillRect(q.x+12,q.y+30,18,16);
-  ctx.strokeStyle="#d4c7b4";ctx.lineWidth=4;
-  for(let i=0;i<4;i++){
-   ctx.beginPath();ctx.moveTo(q.x+8+i*9,q.y+4);ctx.lineTo(q.x+8+i*9,q.y+53);ctx.stroke();
-  }
-  ctx.fillStyle="#34233d";ctx.fillRect(q.x-2,q.y-12,47,6);
-  ctx.fillStyle="#62e99b";ctx.fillRect(q.x-2,q.y-12,47*q.hp/q.max,6);
-  label("RESCUE",q.x+21,q.y-17,10,"#9bffc2","center");
- });
-}
-
-function drawHero(){
- if(player.inv>0&&Math.floor(frame/5)%2===0)return;
- if(heroImage.complete&&heroImage.naturalWidth){
-  ctx.drawImage(heroImage,player.x,player.y,player.w,player.h);
- }else{
-  ctx.fillStyle="#ffd45b";ctx.fillRect(player.x+5,player.y+17,36,35);
-  ctx.fillStyle="#f3c69a";ctx.beginPath();ctx.arc(player.x+24,player.y+13,14,0,7);ctx.fill();
-  ctx.fillStyle="#fff0b2";ctx.fillRect(player.x+4,player.y+3,38,7);
-  ctx.fillStyle="#30203a";ctx.fillRect(player.x+9,player.y+52,11,12);ctx.fillRect(player.x+27,player.y+52,11,12);
- }
-}
-
-function drawAlly(a){
- ctx.fillStyle="#54dca2";ctx.fillRect(a.x+6,a.y+19,23,26);
- ctx.fillStyle="#f0cda1";ctx.beginPath();ctx.arc(a.x+17,a.y+12,11,0,7);ctx.fill();
- ctx.fillStyle="#5b4c39";ctx.fillRect(a.x+6,a.y+2,23,6);
- ctx.fillStyle="#2b9d70";ctx.fillRect(a.x+7,a.y+45,7,6);ctx.fillRect(a.x+22,a.y+45,7,6);
-}
-
-function drawEnemy(e){
- if(e.flying){
-  const flap=Math.sin(frame*.35+e.phase)*11;
-  ctx.fillStyle="#54244f";
-  ctx.beginPath();ctx.moveTo(e.x+18,e.y+15);ctx.lineTo(e.x-10,e.y+flap);
-  ctx.lineTo(e.x+4,e.y+28);ctx.lineTo(e.x+19,e.y+25);ctx.fill();
-  ctx.beginPath();ctx.moveTo(e.x+25,e.y+15);ctx.lineTo(e.x+53,e.y-flap);
-  ctx.lineTo(e.x+39,e.y+28);ctx.lineTo(e.x+24,e.y+25);ctx.fill();
-  ctx.fillStyle="#96355e";ctx.beginPath();ctx.ellipse(e.x+22,e.y+18,12,14,0,0,7);ctx.fill();
-  ctx.fillStyle="#bd455b";
-  ctx.beginPath();ctx.moveTo(e.x+12,e.y+10);ctx.lineTo(e.x+9,e.y-2);ctx.lineTo(e.x+19,e.y+7);ctx.fill();
-  ctx.beginPath();ctx.moveTo(e.x+26,e.y+7);ctx.lineTo(e.x+35,e.y-2);ctx.lineTo(e.x+30,e.y+12);ctx.fill();
-  ctx.fillStyle="#ff3c55";ctx.fillRect(e.x+14,e.y+13,5,4);ctx.fillRect(e.x+25,e.y+13,5,4);
-  ctx.fillStyle="#352039";ctx.fillRect(e.x,e.y-10,e.w,4);
-  ctx.fillStyle="#ff526d";ctx.fillRect(e.x,e.y-10,e.w*e.hp/e.maxHp,4);
- }else{
-  ctx.fillStyle="#bd455b";ctx.fillRect(e.x,e.y+12,e.w,e.h-12);
-  ctx.fillStyle="#f3c8a3";ctx.beginPath();ctx.arc(e.x+17,e.y+10,13,0,7);ctx.fill();
-  ctx.fillStyle="#4b2339";ctx.fillRect(e.x+4,e.y+1,27,8);
-  ctx.fillStyle="#ffd6a0";ctx.fillRect(e.x+7,e.y+18,5,5);ctx.fillRect(e.x+23,e.y+18,5,5);
-  ctx.fillStyle="#381a31";ctx.fillRect(e.x+3,e.y+e.h-3,10,7);ctx.fillRect(e.x+22,e.y+e.h-3,10,7);
-  ctx.fillStyle="#3b2035";ctx.fillRect(e.x,e.y-8,e.w,4);
-  ctx.fillStyle="#ff6d76";ctx.fillRect(e.x,e.y-8,e.w*e.hp/e.maxHp,4);
- }
-}
-
-function drawHUD(){
- ctx.fillStyle="#101326e8";ctx.fillRect(12,12,936,60);
- label("❤️ "+player.hp,25,36,17,"#ff8795");
- label("SCORE "+score,145,36,17);
- label("🪙 "+coins,285,36,17,"#ffd85a");
- label("WAVE "+wave,410,36,17,"#b5caff");
- label("ALLIES "+allies.length,535,36,17,"#79f4b5");
- label("PRISONERS "+cages.filter(q=>!q.freed).length,690,36,16,"#ffce7b");
- ctx.fillStyle="#474159";ctx.fillRect(25,48,150,8);
- ctx.fillStyle="#f45e72";ctx.fillRect(25,48,150*player.hp/player.maxHp,8);
-}
-
-function draw(){
- castle();
- drawCages();
- allies.forEach(drawAlly);
- drawHero();
- enemies.forEach(drawEnemy);
-
- shots.forEach(b=>{
-  ctx.fillStyle=b.owner==="enemy"?"#ff6484":b.owner==="ally"?"#67ffb9":"#ffe56a";
-  ctx.shadowBlur=12;ctx.shadowColor=ctx.fillStyle;
-  ctx.beginPath();ctx.arc(b.x,b.y,4,0,7);ctx.fill();ctx.shadowBlur=0;
- });
-
- loot.forEach(o=>{
-  ctx.fillStyle="#ffd64d";ctx.beginPath();ctx.arc(o.x,o.y,7,0,7);ctx.fill();
-  ctx.strokeStyle="#fff0a3";ctx.lineWidth=2;ctx.stroke();
- });
-
- particles.forEach(p=>{
-  ctx.globalAlpha=Math.max(0,p.life/32);
-  ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);
-  ctx.globalAlpha=1;
- });
-
- drawHUD();
-
- if(!running){
-  ctx.fillStyle="#080a17c9";ctx.fillRect(0,0,W,H);
-  label(gameOver?"KINGDOM FALLEN":"KINGMANIK: DEFEND THE KINGDOM",W/2,220,30,"#ffdc76","center");
-  label(gameOver?"Kerajaan membutuhkanmu kembali!":"Selamatkan teman dan lindungi kastel!",W/2,258,17,"#fff","center");
-  label("Tekan MULAI PERTEMPURAN untuk bermain",W/2,293,15,"#b8e9ff","center");
- }
-}
-
-function endGame(){
- running=false;gameOver=true;
- document.getElementById("start").textContent="↻ COBA LAGI";
-}
-
-function update(){
- if(!running)return;
- frame++;
- if(frame%900===0)wave++;
-
- spawnTimer--;
- const maxEnemies=Math.min(12+wave*2,35);
- if(spawnTimer<=0&&enemies.length<maxEnemies){
-  spawnEnemy();
-  spawnTimer=Math.max(14,65-wave*3);
- }
-
- player.vx=0;
- if(keys.ArrowLeft||keys.a||touch.left)player.vx=-3.7;
- if(keys.ArrowRight||keys.d||touch.right)player.vx=3.7;
- player.x=clamp(player.x+player.vx,0,W-player.w);
-
- player.vy+=.48;
- player.y+=player.vy;
- if(player.y+player.h>=GROUND){
-  player.y=GROUND-player.h;player.vy=0;player.ground=true;
- }else player.ground=false;
-
- if((keys.ArrowUp||keys.w||touch.jump)&&player.ground){
-  player.vy=-10;player.ground=false;
- }
- if(player.cool>0)player.cool--;
- if(player.inv>0)player.inv--;
-
- if((keys[" "]||touch.fire)&&player.cool<=0){
-  // Auto-aim toward airborne enemies; otherwise fire at cages/enemies ahead.
-  const flyingTargets=enemies.filter(e=>e.flying&&e.x>player.x);
-  if(flyingTargets.length)shootAtNearest(player.x+player.w,player.y+25,"hero");
-  else shoot(player.x+player.w,player.y+30,7,0,"hero");
-  player.cool=13;
- }
-
- allies.forEach(a=>{
-  a.cool--;
-  if(a.cool<=0&&enemies.length){
-   shootAtNearest(a.x+a.w,a.y+24,"ally");
-   a.cool=42;
-  }
- });
-
- shots.forEach(b=>{
-  b.x+=b.vx;b.y+=b.vy;b.life--;
-
-  if(b.owner==="enemy"){
-   if(b.x<player.x+player.w&&b.x>player.x&&b.y>player.y&&b.y<player.y+player.h&&player.inv<=0){
-    player.hp--;player.inv=75;b.life=0;
-    burst(player.x+20,player.y+25,"#ff687b",14);
-    if(player.hp<=0)endGame();
-   }
-   return;
-  }
-
-  for(const q of cages){
-   if(!q.freed&&b.x>=q.x&&b.x<=q.x+43&&b.y>=q.y&&b.y<=q.y+57){
-    q.hp--;b.life=0;burst(b.x,b.y,"#ffd36a",5);
-    if(q.hp<=0)rescue(q);
-    break;
-   }
-  }
-  if(b.life<=0)return;
-
-  for(const e of enemies){
-   if(b.x>=e.x-4&&b.x<=e.x+e.w+4&&b.y>=e.y-4&&b.y<=e.y+e.h+4){
-    e.hp--;b.life=0;burst(b.x,b.y,"#ffb35e",5);
-    if(e.hp<=0&&!e.dead){
-     e.dead=true;score+=25;
-     loot.push({x:e.x+15,y:e.y+10,got:false});
-     burst(e.x,e.y,"#ff657c",12);
+    if (coinRainEnabled) {
+        coinRainInterval = setInterval(createCoin, 300);
+        coinToggle.textContent = "🪙 STOP COIN RAIN";
+        coinToggle.setAttribute("aria-pressed", "true");
+    } else {
+        clearInterval(coinRainInterval);
+        coinRain.replaceChildren();
+        coinToggle.textContent = "🪙 START COIN RAIN";
+        coinToggle.setAttribute("aria-pressed", "false");
     }
-    break;
-   }
-  }
- });
-
- shots=shots.filter(b=>b.life>0&&b.x>-30&&b.x<W+30&&b.y>-30&&b.y<H+30);
- enemies=enemies.filter(e=>!e.dead);
-
- enemies.forEach(e=>{
-  e.x-=e.speed;
-  if(e.flying){
-   e.y=e.baseY+Math.sin(frame*.055+e.phase)*42;
-  }else e.y=GROUND-e.h;
-
-  if(e.x<player.x+player.w&&e.x+e.w>player.x&&
-     e.y<player.y+player.h&&e.y+e.h>player.y&&player.inv<=0){
-   player.hp--;player.inv=75;e.x-=45;
-   burst(player.x,player.y,"#ff687b",12);
-   if(player.hp<=0)endGame();
-  }
-
-  e.cool--;
-  if(e.cool<=0&&e.x<player.x+W*.6){
-   const dx=player.x+player.w/2-e.x;
-   const dy=player.y+player.h/2-(e.y+e.h/2);
-   const len=Math.hypot(dx,dy)||1;
-   shoot(e.x,e.y+e.h/2,dx/len*3.4,dy/len*3.4,"enemy");
-   e.cool=rand(90,150);
-  }
- });
-
- loot.forEach(o=>{
-  o.y+=Math.sin(frame/8)*.5;
-  if(Math.abs(o.x-(player.x+player.w/2))<27&&
-     Math.abs(o.y-(player.y+player.h/2))<38){
-   o.got=true;coins++;score+=10;
-   burst(o.x,o.y,"#ffe66a",8);
-  }
- });
- loot=loot.filter(o=>!o.got);
-
- particles.forEach(p=>{
-  p.x+=p.vx;p.y+=p.vy;p.vy+=.08;p.life--;
- });
- particles=particles.filter(p=>p.life>0);
-}
-
-function loop(){
- update();draw();
- requestAnimationFrame(loop);
-}
-
-document.getElementById("start").addEventListener("click",()=>{
- reset();running=true;
- document.getElementById("start").textContent="↻ MULAI ULANG";
 });
 
-document.addEventListener("keydown",e=>{
- if(["ArrowLeft","ArrowRight","ArrowUp"," "].includes(e.key))e.preventDefault();
- keys[e.key]=true;keys[e.key.toLowerCase()]=true;
-});
-document.addEventListener("keyup",e=>{
- keys[e.key]=false;keys[e.key.toLowerCase()]=false;
+const backToTop = document.getElementById("back-to-top");
+
+backToTop.style.display = "none";
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
 });
 
-function bind(id,key){
- const el=document.getElementById(id);
- el.addEventListener("pointerdown",e=>{
-  e.preventDefault();touch[key]=true;
-  if(el.setPointerCapture)el.setPointerCapture(e.pointerId);
- });
- ["pointerup","pointercancel","lostpointercapture"].forEach(ev=>{
-  el.addEventListener(ev,e=>{e.preventDefault();touch[key]=false;});
- });
-}
-bind("left","left");
-bind("right","right");
-bind("jump","jump");
-bind("fire","fire");
+backToTop.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
 
-reset();
-draw();
-loop();
-})();
 </script>
+
+<footer class="site-footer">
+    <p>$KINGMANIK © 2026</p>
+    <p>BUILT FOR THE DEGEN KINGDOM 👑</p>
+    <p class="footer-warning">
+        Meme token project. DYOR. Crypto involves risk.
+    </p>
+</footer>
+
 </body>
 </html>
